@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".edit_profile"
-    android:padding="10dp"
-    >
+    android:padding="10dp" >
+
 
     <EditText
         android:id="@+id/edt_nombre"
@@ -17,10 +17,8 @@
         android:ems="10"
         android:hint="@string/nombre_completo"
         android:inputType="text"
-        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck"
         tools:layout_editor_absoluteY="28dp" />
 
     <EditText
@@ -35,8 +33,7 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nombre"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_nombre"/>
 
     <EditText
         android:id="@+id/edt_oficina"
@@ -50,8 +47,7 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_email"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_email"/>
 
     <EditText
         android:id="@+id/edt_telefono"
@@ -65,8 +61,7 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_oficina"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_oficina"/>
 
     <Button
         android:id="@+id/button2"

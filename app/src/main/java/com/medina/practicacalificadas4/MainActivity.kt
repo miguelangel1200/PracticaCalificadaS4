@@ -5,9 +5,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.medina.practicacalificadas4.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,15 +21,20 @@ const val PARAMETER_EXTRA_PHONE = "phone"
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
     }
 
 
     fun sendWsp(view: android.view.View){
 
-        val phone = textView12.text.toString()
+        val phone = binding.textView12.text.toString()
         val url = "https://api.whatsapp.com/send?phone=+51 $phone"
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(url)
@@ -36,13 +43,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun send_text(view: android.view.View){
-        val phone = textView12.text.toString()
+        val phone = binding.textView12.text.toString()
 
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone)))
     }
 
     fun calling(view: android.view.View){
-        val phone = textView12.text.toString()
+        val phone = binding.textView12.text.toString()
         val intent = Intent()
         intent.action = Intent.ACTION_DIAL
         intent.data = Uri.parse ("tel: +51 $phone")
@@ -50,13 +57,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sendExplicit(view: android.view.View) {
-        val nom = textView9.text.toString()
-        val ema = textView10.text.toString()
-        val addre = textView11.text.toString()
-        val cel = textView12.text.toString()
+        val nom = binding.textView9.text.toString()
+        val ema = binding.textView10.text.toString()
+        val addre = binding.textView11.text.toString()
+        val cel = binding.textView12.text.toString()
         validateInputFields(nom, ema, addre, cel)
         goDetailActivity(nom, ema, addre, cel)
     }
+
+
 
     private fun goDetailActivity(nom: String, ema: String, addre: String, cel: String) {
         val intent = Intent(this, edit_profile::class.java)
@@ -87,19 +96,19 @@ class MainActivity : AppCompatActivity() {
 
                     if (extras != null) {
                         if (extras.get(PARAMETER_EXTRA_NAME) != null) {
-                            textView9.text = extras.getString(PARAMETER_EXTRA_NAME)
+                            binding.textView9.text = extras.getString(PARAMETER_EXTRA_NAME)
                         }
 
                         if (extras.get(PARAMETER_EXTRA_EMAIL) != null) {
-                            textView10.text = extras.getString(PARAMETER_EXTRA_EMAIL)
+                            binding.textView10.text = extras.getString(PARAMETER_EXTRA_EMAIL)
                         }
 
                         if (extras.get(PARAMETER_EXTRA_ADDRESS) != null) {
-                            textView11.text = extras.getString(PARAMETER_EXTRA_ADDRESS)
+                            binding.textView11.text = extras.getString(PARAMETER_EXTRA_ADDRESS)
                         }
 
                         if (extras.get(PARAMETER_EXTRA_PHONE) != null) {
-                            textView12.text = extras.getString(PARAMETER_EXTRA_PHONE)
+                            binding.textView12.text = extras.getString(PARAMETER_EXTRA_PHONE)
                         }
                     }
                 }
